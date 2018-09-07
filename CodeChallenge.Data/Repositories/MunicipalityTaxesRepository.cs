@@ -62,7 +62,7 @@ namespace CodeChallenge.Data.Repositories
             return await _context.Municipalities
                 .Where(o => o.Name == municipalityName)
                 .Include("Taxes")
-                .FirstAsync();
+                .FirstOrDefaultAsync();
         }
 
         /// <summary>

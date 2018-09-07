@@ -52,11 +52,11 @@ namespace CodeChallenge.Controllers
             if (!ModelState.IsValid)
             {
                 // Handle bad format 
-                return RedirectToAction(nameof(Index));
+                return StatusCode(400);
             }
 
             await _municipalityTaxesService.AddMunicipalityTax(municipalityTaxModel);
-            return RedirectToAction(nameof(Index));
+            return Ok();
         }
 
         [HttpPut]
@@ -66,11 +66,11 @@ namespace CodeChallenge.Controllers
             if (!ModelState.IsValid)
             {
                 // Handle bad format 
-                return RedirectToAction(nameof(Index));
+                return StatusCode(400);
             }
 
             await _municipalityTaxesService.UpdateMunicipalityTax(municipalityTaxModel);
-            return RedirectToAction(nameof(Index));
+            return Ok();
         }
 
         [HttpPut]
@@ -78,7 +78,7 @@ namespace CodeChallenge.Controllers
         public async Task<IActionResult> ImportMunicipalityTaxes()
         {
             await _municipalityTaxesService.ImportDataFromCsv();
-            return RedirectToAction(nameof(Index));
+            return Ok();
         }
     }
 }
